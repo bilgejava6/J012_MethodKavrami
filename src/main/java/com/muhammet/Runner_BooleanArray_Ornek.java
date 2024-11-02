@@ -1,5 +1,7 @@
 package com.muhammet;
 
+import java.util.Scanner;
+
 public class Runner_BooleanArray_Ornek {
     static  boolean[] ogrenciDurumu = new boolean[20];
     static  String[] ogrenciListesi = {
@@ -24,7 +26,7 @@ public class Runner_BooleanArray_Ornek {
             "Gökhan Kılıç",
             "Nuray Doğan"
     };
-    int[][] notlar = {
+    static int[][] notlar = {
             {85, 90},  // 1. öğrenci
             {78, 82},  // 2. öğrenci
             {2, 88},  // 3. öğrenci
@@ -56,8 +58,69 @@ public class Runner_BooleanArray_Ornek {
          * Buna göre öğrencilerin geçti/kaldı durumuna göre karne alıp
          * alamayacaklarını bulan bir kodlama yapınız.
           */
-
-
+        notHesapla();
+        init();
     }// end main method
 
+    public static void init(){
+        System.out.println("""
+                **************************
+                1- Öğrenci Listesi
+                2- Not Listesi
+                3- Geçti/Kaldı Listesi
+                4- Arama
+                0- ÇIKIŞ
+                """);
+        System.out.print("seçiniz....: ");
+        int secim = new Scanner(System.in).nextInt();
+        switch (secim){
+            case 1: ogrenciListesi(); break;
+            case 2: notListesi(); break;
+            case 3: diplomaListesi(); break;
+            case 4: arama(); break;
+            case 0:
+                System.out.println("ÇIKIŞ YAPILDI"); break;
+            default:
+                System.out.println("lütfen geçerli bir seçim yapınız."); break;
+        }
+    } // end init
+    public static void ogrenciListesi(){
+        System.out.println("""
+                ***** Öğrenic Listesi ******
+                """);
+        for(int i=0;i<ogrenciListesi.length;i++)
+            System.out.println(i+1+". öğrenci....: "+ ogrenciListesi[i]);
+    } // end ogrenciListesi
+    public static void notListesi(){
+        System.out.println("""
+                    ***** Öğrenic Not Listesi ******
+                    """);
+        for (int i=0;i<ogrenciListesi.length;i++){
+            System.out.print("Ad....: "+ogrenciListesi[i]);
+            System.out.print(" 1. not..: "+ notlar[i][0]);
+            System.out.print(" 2. not..: "+ notlar[i][1]);
+            System.out.println();
+        }
+    }// end notlistesi
+    public static void diplomaListesi(){
+            for (int i=0;i<ogrenciListesi.length;i++){
+                System.out.println("öğrenci...........: "+ ogrenciListesi[i]);
+                System.out.println("öğrenic durumu....: "+
+                        (ogrenciDurumu[i] ? "GEÇTİ" : "KALDI")
+                );
+                System.out.println("-------------------------");
+            }
+    }// end diplomalistesi
+    public static void arama(){
+
+    } // end arama
+    public static void notHesapla(){
+        for (int i=0;i<ogrenciDurumu.length;i++){
+            int not1 = notlar[i][0];// 2
+            int not2 = notlar[i][1];// 88
+            int ortalama = (not1 + not2)/2; // 45
+            boolean gectiMi = ortalama>=50; // false
+            ogrenciDurumu[i] = gectiMi;
+        }
+    }
 }//end class
