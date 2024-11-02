@@ -59,10 +59,13 @@ public class Runner_BooleanArray_Ornek {
          * alamayacaklarını bulan bir kodlama yapınız.
           */
         notHesapla();
-        init();
+        do{
+        }while (!init());
+
     }// end main method
 
-    public static void init(){
+    public static boolean init(){
+        boolean isClose = false;
         System.out.println("""
                 **************************
                 1- Öğrenci Listesi
@@ -79,10 +82,12 @@ public class Runner_BooleanArray_Ornek {
             case 3: diplomaListesi(); break;
             case 4: arama(); break;
             case 0:
+                isClose = true;
                 System.out.println("ÇIKIŞ YAPILDI"); break;
             default:
                 System.out.println("lütfen geçerli bir seçim yapınız."); break;
         }
+        return isClose;
     } // end init
     public static void ogrenciListesi(){
         System.out.println("""
