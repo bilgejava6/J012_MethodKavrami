@@ -112,7 +112,30 @@ public class Runner_BooleanArray_Ornek {
             }
     }// end diplomalistesi
     public static void arama(){
+        System.out.print("arana kişi....: ");
+        String aramaText = new Scanner(System.in).nextLine();
+        String ogrenci="";
+        int not1=0,not2=0, bulunanIndex=-1;
+        boolean gectiMi=false;
 
+        for (int i=0;i< ogrenciListesi.length;i++){
+            String ad = ogrenciListesi[i];
+            if(ad.toLowerCase().contains(aramaText.toLowerCase())){
+                bulunanIndex = i;
+                ogrenci = ad;
+                break;
+            }
+        }
+        if(bulunanIndex==-1) System.out.println("Öğrenci bulunamadı");
+        else{
+            not1 = notlar[bulunanIndex][0];
+            not2 = notlar[bulunanIndex][1];
+            gectiMi = ogrenciDurumu[bulunanIndex];
+            System.out.println("Öğreni adı....: "+ ogrenci);
+            System.out.println("1. not........: "+ not1);
+            System.out.println("2. not........: "+ not2);
+            System.out.println("durumu........: "+ (gectiMi ? "GEÇTİ": "KALDI"));
+        }
     } // end arama
     public static void notHesapla(){
         for (int i=0;i<ogrenciDurumu.length;i++){
